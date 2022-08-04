@@ -15,7 +15,19 @@
     <div id="'timer">Timer : 30</div>
 
     <script src = "index.js"></script>
-    
+    <script>
+        function noZoom(element, evenementNom, listener) {
+          var evenement = evenementNom.split(' ');
+          for (var i=0, iLen=evenement.length; i<iLen; i++) {
+            element.addEventListener(evenement[i], listener, false);
+          }
+        }
+        
+        noZoom(document, 'gesturestart gesturechange gestureend', function(e) {
+          e.preventDefault();
+          document.body.style.zoom = 1;
+        });
+        </script>
 </body>
 
 </html>
